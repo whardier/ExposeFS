@@ -1,0 +1,70 @@
+ExposeFS
+========
+
+Introduction
+------------
+Say you have a bunch of files on a special filesystem that some giant 
+corporation loves to use for completely insane reasons as well as 
+maintain backwards compatibility with software that should have bit the 
+dust ages ago.
+
+Requirements
+------------
+
+ExposeFS exposes itself as a POSIX compliant 
+filesystem.  That said it expects only one extension to what most would 
+consider a standard POSIX file system which is hard links.  The overlay 
+filesystem will appear to have hard links for many nodes including the 
+owner information nodes and acl information nodes.
+
+Sparse Files
+~~~~~~~~~~~~
+
+Work in progress
+
+Caching
+-------
+
+Memory is used to create inode maps allowing multiple filesystems to be 
+backed up at once while retaining the ability to use hard links for 
+cached information as well as hard links per filesystem.  The mapping is 
+simple and inode count starts at 1.  In memory the hard links are stored 
+as an integer that relates to a set of two integers, one for the file 
+system ID (0 is reserved for internal uses), and one for the actual 
+inode.
+
+Supported Underlaying Filesystems
+---------------------------------
+
+Common
+~~~~~~
+
+This section covers all common information that all supported 
+filesystems should have.
+
+  - */data (GET/SET) The actual file data
+  - */uid (GET/SET) POSIX UID Number 
+  - */gid (GET/SET) POSIX GID ...
+  - */uidname (GET/SET) Resolved user name
+  - */gidname (GET/SET) Resolved group name
+  - */ctime (GET/SET) Creation Timestamp
+  - */atime (GET/SET) Access Timestamp
+  - */mtime (GET/SET) Modify Timestamp
+  - */mode (GET/SET) File mode
+
+Supported Underlaying Filesystems (pending):
+--------------------------------------------
+
+HFS+
+~~~~~~~~
+
+The following are exposed for Mac OS X (tested) HFS+ filesystems.
+
+  - */acl (GET/SET) ACL
+  - */aclname (GET) Resolved ACL
+  - */rsrc (GET/SET) Resource Fork
+
+Contact
+-------
+
+hardwire on freenode
