@@ -1,0 +1,20 @@
+Requirements:
+
+  xattr     http://undefined.org/python/#xattr
+              or 
+            easy_install xattr
+
+  pyfuse    http://code.google.com/p/fusepy/
+              or
+            easy_install pyfuse
+
+Special OSX Requirements:
+
+  macfuse for most OSX systems:
+    http://code.google.com/p/macfuse/
+
+  macfuse for Snow Leopard 64 Bit:
+    http://caurea.org/2009/09/15/unofficial-macfuse-release-for-64bit-kernels/
+      or
+    http://github.com/wereHamster/macfuse
+
